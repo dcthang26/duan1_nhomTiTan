@@ -1,0 +1,14 @@
+# Bật mod_rewrite
+RewriteEngine On
+
+# Cập nhật nếu dự án chạy ở path khác
+RewriteBase /website_quan_ly_tour/
+
+# Route trang chủ
+RewriteRule ^$ index.php [L,QSA]
+
+# Các đường dẫn khác (không phải file/thư mục thật) chuyển về index.php?act=...
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?act=$1 [L,QSA]
+
